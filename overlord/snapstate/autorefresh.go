@@ -121,12 +121,12 @@ func (m *autoRefresh) EffectiveRefreshHold() (time.Time, error) {
 		}
 		lastRefresh = seedTime
 	}
-
+/*
 	limitTime := lastRefresh.Add(maxPostponement)
 	if holdTime.After(limitTime) {
 		return limitTime, nil
 	}
-
+*/
 	return holdTime, nil
 }
 
@@ -210,12 +210,13 @@ func (m *autoRefresh) canRefreshRespectingMetered(now, lastRefresh time.Time) (c
 		return true, nil
 	}
 
+/*
 	if now.Sub(lastRefresh) >= maxPostponement {
 		// TODO use warnings when the infra becomes available
 		logger.Noticef("Auto refresh disabled while on metered connections, but pending for too long (%d days). Trying to refresh now.", int(maxPostponement.Hours()/24))
 		return true, nil
 	}
-
+*/
 	logger.Debugf("Auto refresh disabled on metered connections")
 
 	return false, nil
